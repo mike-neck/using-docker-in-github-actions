@@ -1,0 +1,24 @@
+name: test
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  docker-compose:
+    name: compose
+    runs-on: ubuntu-latest
+    steps:
+      - name: docker pull
+        run: docker pull kennethreitz/httpbin:latest
+
+      - name: docker-compose
+        run: docker-compose up -d
+
+      - name: run curl
+        run: |
+          curl -i --head http://localhost:3000/get
+
+      - name: down
+        run: docker-compose down
