@@ -19,6 +19,14 @@ jobs:
       - name: docker-compose
         run: docker-compose up -d
 
+      - name: inspect
+        run: |
+          echo 'docker ps'
+          docker ps
+          echo ''
+          echo 'ifconfig'
+          ifconfig
+
       - name: run curl
         run: |
           curl -i --head http://localhost:3000/get
