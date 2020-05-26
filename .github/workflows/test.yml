@@ -10,6 +10,9 @@ jobs:
     name: compose
     runs-on: ubuntu-latest
     steps:
+      - name: check out
+        uses: actions/checkout@v2
+
       - name: docker pull
         run: docker pull kennethreitz/httpbin:latest
 
